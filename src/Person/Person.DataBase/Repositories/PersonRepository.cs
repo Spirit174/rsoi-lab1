@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Person.Core.Exceptions;
+using Person.Core.Interfaces;
 using Person.DataBase.Context;
 using Person.DataBase.Converters;
 using CorePerson = Person.Core.Models.Person;
@@ -7,7 +8,7 @@ using DataBasePerson = Person.Database.Models.Person;
 
 namespace Person.DataBase.Repositories;
 
-public class PersonRepository
+public class PersonRepository : IPersonRepository
 {
     private readonly PersonContext _context;
     
@@ -50,9 +51,14 @@ public class PersonRepository
         return PersonConverter.Convert(person);
     }
 
-    public async Task<CorePerson> DeletePersonByIdAsync(Guid id)
+    public async Task DeletePersonByIdAsync(Guid id)
     {
+        var dbPerson = await _context.Persons.FirstOrDefaultAsync(p => p.Id == id);
+        if (dbPerson is null)
+            throw new PersonNotFoundException($"Person with id {id} was not found");
         
+        _context.Persons.Remove(dbPerson);
+        await _context.SaveChangesAsync();
     }
 
     public async Task<CorePerson> GetPersonByIdAsync(Guid id)
@@ -64,8 +70,9 @@ public class PersonRepository
         return PersonConverter.Convert(dbPerson);
     }
 
-    public async Task<CorePerson> GetPeopleAsync(CorePerson person)
+    public async Task<List<CorePerson>> GetPeopleAsync(CorePerson person)
     {
-        
+        var persons = await _context.Persons.ToListAsync();
+        return persons.ConvertAll(PersonConverter.Convert);
     }
 }
