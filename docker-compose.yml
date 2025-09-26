@@ -15,9 +15,9 @@ services:
       - "5432:5432"
     
   backend:
-    image:
-    hostname:
-    container_name:
+    image: backend:latest
+    hostname: backend
+    container_name: backend
     ports:
       - "5009:5009"
     restart: always
