@@ -21,6 +21,8 @@ services:
     ports:
       - "5009:5009"
     restart: always
+    depends_on:
+      postgres:
     
 volumes:
   db-data:
