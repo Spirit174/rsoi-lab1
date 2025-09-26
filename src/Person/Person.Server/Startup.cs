@@ -1,7 +1,11 @@
 using System.Reflection;
 using FluentValidation;
 using Microsoft.OpenApi.Models;
+using Person.Core.Interfaces;
+using Person.DataBase.Repositories;
+using Person.DTO.Models;
 using Person.Server.Extensions;
+using Person.Services;
 
 namespace Person.Server;
 
@@ -21,15 +25,16 @@ public class Startup
         services.AddSwaggerGen(c =>
         {
             c.SwaggerDoc("v1", new OpenApiInfo { Title = "Person.Server", Version = "v1" });
-            
-            var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-            c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
 
         });
         services.AddSwaggerGenNewtonsoftSupport();
         
+        services.AddValidatorsFromAssemblyContaining<PersonRequestValidator>();
         
         services.AddDbContext(Configuration);
+        
+        services.AddScoped<IPersonRepository, PersonRepository>();
+        services.AddScoped<IPersonService, PersonService>();
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

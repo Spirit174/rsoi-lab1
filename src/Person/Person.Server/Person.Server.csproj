@@ -7,7 +7,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="FluentValidation" Version="11.11.0" />
+        <PackageReference Include="FluentValidation" Version="12.0.0" />
+        <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.1" />
         <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.3.0" />
         <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="9.0.9" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.8" />
@@ -31,6 +32,8 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Person.DataBase\Person.DataBase.csproj" />
+      <ProjectReference Include="..\Person.DTO\Person.DTO.csproj" />
+      <ProjectReference Include="..\Person.Services\Person.Services.csproj" />
     </ItemGroup>
 
 </Project>

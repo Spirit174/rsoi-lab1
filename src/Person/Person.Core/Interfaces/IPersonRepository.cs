@@ -12,7 +12,6 @@ public interface IPersonRepository
     /// </summary>
     /// <param name="person">Объект человека для создания.</param>
     /// <returns>Созданный объект человека.</returns>
-    /// <exception cref="PersonAlreadyExistsException">Выбрасывается, если человек с таким именем уже существует.</exception>
     Task<CorePersone> CreatePersonAsync(CorePersone person);
 
     /// <summary>
@@ -24,14 +23,12 @@ public interface IPersonRepository
     /// <param name="address">Новый адрес.</param>
     /// <param name="workplace">Новое место работы.</param>
     /// <returns>Обновленный объект человека.</returns>
-    /// <exception cref="PersonNotFoundException">Выбрасывается, если человек с указанным ID не найден.</exception>
     Task<CorePersone> UpdatePersonAsync(Guid id, string? name, int? age, string? address, string? workplace);
 
     /// <summary>
     /// Удаляет человека по идентификатору.
     /// </summary>
     /// <param name="id">Идентификатор человека для удаления.</param>
-    /// <exception cref="PersonNotFoundException">Выбрасывается, если человек с указанным ID не найден.</exception>
     Task DeletePersonByIdAsync(Guid id);
 
     /// <summary>
@@ -39,7 +36,6 @@ public interface IPersonRepository
     /// </summary>
     /// <param name="id">Идентификатор человека.</param>
     /// <returns>Найденный объект человека.</returns>
-    /// <exception cref="PersonNotFoundException">Выбрасывается, если человек с указанным ID не найден.</exception>
     Task<CorePersone> GetPersonByIdAsync(Guid id);
 
     /// <summary>

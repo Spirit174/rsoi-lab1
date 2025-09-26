@@ -1,5 +1,9 @@
+using System.Reflection;
+using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using Person.DataBase.Context;
+using FluentValidation.AspNetCore;
+using Person.DTO.Models;
 
 namespace Person.Server.Extensions;
 
@@ -23,5 +27,12 @@ public static class HostProviderExtensions
         {
             options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"));
         });
+    }
+    
+    public static void AddValidators(this IServiceCollection services)
+    {
+        services.AddFluentValidationAutoValidation();
+        services.AddFluentValidationClientsideAdapters();
+        services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
     }
 }

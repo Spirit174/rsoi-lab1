@@ -36,7 +36,9 @@ public class PersonRepository : IPersonRepository
 
     public async Task<CorePerson> UpdatePersonAsync(Guid id, string? name, int? age, string? address, string? workplace)
     {
-        var person = PersonConverter.Convert(await GetPersonByIdAsync(id));
+        var person = await _context.Persons.FirstOrDefaultAsync(p => p.Id == id);
+        if (person is null)
+            throw new PersonNotFoundException($"Person with id {id} was not found");
         
         if(name != null)
             person.Name = name;
@@ -70,7 +72,7 @@ public class PersonRepository : IPersonRepository
         return PersonConverter.Convert(dbPerson);
     }
 
-    public async Task<List<CorePerson>> GetPeopleAsync(CorePerson person)
+    public async Task<List<CorePerson>> GetPeopleAsync()
     {
         var persons = await _context.Persons.ToListAsync();
         return persons.ConvertAll(PersonConverter.Convert);
