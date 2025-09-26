@@ -24,6 +24,10 @@ jobs:
       - name: Dependencies
         run: dotnet restore src/Person/Person.sln
         
+      - name: Docker Image
+        run: |
+          docker build backend:latest
+        
   test:
     name: Tests
     runs-on: ubuntu-latest

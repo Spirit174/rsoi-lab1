@@ -13,6 +13,14 @@ services:
       - ./postgres/:/docker-entrypoint-initdb.d/
     ports:
       - "5432:5432"
-
+    
+  backend:
+    image:
+    hostname:
+    container_name:
+    ports:
+      - "5009:5009"
+    restart: always
+    
 volumes:
   db-data:
