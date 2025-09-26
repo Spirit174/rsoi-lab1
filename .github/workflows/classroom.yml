@@ -24,6 +24,9 @@ jobs:
       - name: Dependencies
         run: dotnet restore src/Person/Person.sln
         
+      - name: Publish
+        run: dotnet publish src/Person/Person.Server/Person.Server.csproj -c Release -o PersonPublish
+        
       - name: Docker Image
         run: |
           docker build -t backend:latest ./
