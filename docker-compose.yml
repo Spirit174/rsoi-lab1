@@ -22,7 +22,7 @@ services:
       - "5009:5009"
     restart: always
     depends_on:
-      postgres:
+      - postgres
     
 volumes:
   db-data:
