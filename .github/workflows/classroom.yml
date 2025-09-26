@@ -1,25 +1,40 @@
 name: GitHub Classroom Workflow
 on:
-  push:
-    branches:
-      - master
-      - develop
-  pull_request:
-    branches:
-      - master
-      - develop
+    push:
+        branches:
+            - master
+            - develop
+    pull_request:
+        branches:
+            - master
+            - develop
       
 jobs:
-  build:
-    name: Build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
+    build:
+        name: Build
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
         
-      - name: .Net
-        uses: actions/setup-dotnet@v3 
-        with: 
-            dotnet-version: '9.0.x'
+            - name: .Net
+                uses: actions/setup-dotnet@v3 
+                with: 
+                    dotnet-version: '9.0.x'
             
-      - name: Dependencies
-        run: dotnet restore src/Person/Person.sln
+            - name: Dependencies
+                run: dotnet restore src/Person/Person.sln
+        
+    test:
+        name: Tests
+        runs-on: ubuntu-latest
+        needs: build 
+        steps:
+            - uses: actions/checkout@v3
+            
+            - name: .Net
+                uses: actions/setup-dotnet@v3 
+                with: 
+                dotnet-version: '9.0.x'
+                
+            - name: Run Unit Tests
+                run: dotnet test src/Person/Person.sln
