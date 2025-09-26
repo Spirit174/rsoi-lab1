@@ -40,6 +40,15 @@ public class PersonRepository : IPersonRepository
         if (person is null)
             throw new PersonNotFoundException($"Person with id {id} was not found");
         
+        if (name != person.Name)
+        {
+            var personWithSameName = await _context.Persons
+                .FirstOrDefaultAsync(p => p.Name == name && p.Id != id);
+                
+            if (personWithSameName != null)
+                throw new PersonAlreadyExistsException($"Person with name '{name}' already exists");
+        }
+        
         if(name != null)
             person.Name = name;
         if(age != null)
