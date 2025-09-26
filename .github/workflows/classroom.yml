@@ -26,7 +26,14 @@ jobs:
         
       - name: Docker Image
         run: |
-          docker build -t backend:latest
+          docker build -t backend:latest ./
+          docker save backend:latest > backend.tar
+          
+      - name: Save Image
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-image
+          path: backend.tar
         
   test:
     name: Tests
