@@ -19,7 +19,7 @@ services:
     hostname: backend
     container_name: backend
     ports:
-      - "5009:5009"
+      - "8070:8070"
     restart: always
     depends_on:
       - postgres
