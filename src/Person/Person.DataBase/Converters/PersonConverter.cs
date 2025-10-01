@@ -11,7 +11,7 @@ public class PersonConverter
             person.Name,
             person.Age,
             person.Address,
-            person.WorkPlace);
+            person.Work);
     }
     
     public static DataBasePerson Convert(CorePerson person)

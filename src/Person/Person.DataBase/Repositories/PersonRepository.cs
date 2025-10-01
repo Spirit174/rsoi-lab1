@@ -56,7 +56,7 @@ public class PersonRepository : IPersonRepository
         if(address != null)
             person.Address = address;
         if(workplace != null)
-            person.WorkPlace = workplace;
+            person.Work = workplace;
         
         await _context.SaveChangesAsync();
         return PersonConverter.Convert(person);

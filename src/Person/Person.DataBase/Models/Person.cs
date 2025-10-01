@@ -25,7 +25,7 @@ public class Person
     /// <summary>
     /// Место работы.
     /// </summary>
-    public string? WorkPlace { get; set; }
+    public string? Work { get; set; }
 
     public Person(Guid id,
         string name,
@@ -37,6 +37,6 @@ public class Person
         Name = name;
         Age = age;
         Address = address;
-        WorkPlace = workPlace;
+        Work = workPlace;
     }
 }
