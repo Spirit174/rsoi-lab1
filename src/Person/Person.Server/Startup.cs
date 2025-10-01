@@ -50,7 +50,7 @@ public class Startup
         });
         app.UseSwaggerUI(c =>
         {
-            c.SwaggerEndpoint("/api/v1/swagger/v1/swagger.json", "PersonService.Server.Http v1");
+            c.SwaggerEndpoint("/api/v1/swagger/v1/swagger.json", "Person.Server.Http v1");
             c.RoutePrefix = "api/v1/swagger";
         });
         app.UseRouting();
