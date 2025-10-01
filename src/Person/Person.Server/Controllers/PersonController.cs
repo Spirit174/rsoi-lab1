@@ -105,7 +105,7 @@ public class PersonController : ControllerBase
     /// <response code="200">Сущность успешно получена.</response>
     /// <response code="404">Сущность с указанным идентификатором не найдена.</response>
     /// <response code="500">Ошибка на стороне сервера.</response>
-    [HttpGet("{personId}")]
+    [HttpGet("{id:guid}")]
     [SwaggerOperation("Метод для получения сущности Person.", "Метод для получения сущности Person.")]
     [SwaggerResponse(statusCode: 200, type: typeof(PersonResponse), description: "Коллекция успешно получена.")]
     [SwaggerResponse(statusCode: 404, type: typeof(ErrorResponse), description: "Сущность с указанным идентификатором не найдена.")]
@@ -144,7 +144,7 @@ public class PersonController : ControllerBase
     /// <response code="400">Одно или несколько полей модели невалидны.</response>
     /// <response code="404">Сущность с указанным идентификатором не существует.</response>
     /// <response code="500">Ошибка на стороне сервера.</response>
-    [HttpPatch("{personId}")]
+    [HttpPatch("{id:guid}")]
     [SwaggerOperation("Метод для обновления сущности Person.", "Метод для обновления сущности Person.")]
     [SwaggerResponse(statusCode: 200, type: typeof(PersonResponse), description: "Сущность Person успешно обновлена.")]
     [SwaggerResponse(statusCode: 400, type: typeof(ErrorResponse), description: "Одно или несколько полей модели невалидны.")]
@@ -195,7 +195,7 @@ public class PersonController : ControllerBase
     /// <response code="204">Сущность Person успешно удалена.</response>
     /// <response code="404">Сущность с указанным идентификатором не существует.</response>
     /// <response code="500">Ошибка на стороне сервера.</response>
-    [HttpDelete("{personId}")]
+    [HttpDelete("{id:guid}")]
     [SwaggerOperation("Метод для удаления сущности Person.", "Метод для удаления сущности Person.")]
     [SwaggerResponse(statusCode: 204, description: "Сущность Person успешно удалена.")]
     [SwaggerResponse(statusCode: 404, type: typeof(ErrorResponse), description: "Сущность с указанным идентификатором не существует.")]
