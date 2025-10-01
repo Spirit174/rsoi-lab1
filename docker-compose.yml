@@ -1,16 +1,16 @@
 version: "3"
 services:
-  postgresss:
+  postgres:
     image: library/postgres:17
-    container_name: postgresss
+    container_name: postgres
     restart: on-failure
     environment:
-      POSTGRES_USER: postgresss
-      POSTGRES_PASSWORD: "postgresss"
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: "postgres"
       POSTGRES_DB: postgresss
     volumes:
       - db-data:/var/lib/postgresql/data
-      - ./postgresss/:/docker-entrypoint-initdb.d/
+      - ./postgres/:/docker-entrypoint-initdb.d/
     ports:
       - "5432:5432"
     
