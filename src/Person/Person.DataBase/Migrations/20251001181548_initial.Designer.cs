@@ -12,7 +12,7 @@ using Person.DataBase.Context;
 namespace Person.DataBase.Migrations
 {
     [DbContext(typeof(PersonContext))]
-    [Migration("20250926184857_initial")]
+    [Migration("20251001181548_initial")]
     partial class initial
     {
         /// <inheritdoc />
