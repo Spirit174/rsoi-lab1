@@ -1,5 +1,5 @@
 FROM mcr.microsoft.com/dotnet/aspnet:9.0-alpine
-EXPOSE 80
+EXPOSE 8070
 WORKDIR /app
 
 ENV TZ=Europe/Moscow
