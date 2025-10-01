@@ -1,0 +1,11 @@
+version: "3"
+services:  
+  backend:
+    image: backend:latest
+    hostname: backend
+    container_name: backend
+    ports:
+      - "8070:8070"
+    restart: always
+
+    

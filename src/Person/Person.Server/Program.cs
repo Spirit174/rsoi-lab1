@@ -14,7 +14,7 @@ public class Program
         {
             CreateHostBuilder(args)
                 .Build()
-                //.MigrateDatabase()
+                .MigrateDatabase()
                 .Run();
         }
         catch (Exception e)
