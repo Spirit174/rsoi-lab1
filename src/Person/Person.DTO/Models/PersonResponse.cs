@@ -44,18 +44,18 @@ public class PersonResponse
     /// </summary>
     [DataMember(Name = "work")]
     [JsonPropertyName("work")]
-    public string? WorkPlace { get; set; }
+    public string? Work { get; set; }
 
     public PersonResponse(Guid id,
         string name,
         int? age,
         string? address,
-        string? workPlace)
+        string? work)
     {
         Id = id;
         Name = name;
         Age = age;
         Address = address;
-        WorkPlace = workPlace;
+        Work = work;
     }
 }

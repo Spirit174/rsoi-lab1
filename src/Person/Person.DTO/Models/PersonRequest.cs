@@ -36,17 +36,17 @@ public class PersonRequest
     /// </summary>
     [DataMember(Name = "work")]
     [JsonPropertyName("work")]
-    public string? WorkPlace { get; set; }
+    public string? Work { get; set; }
 
     
     public PersonRequest(string? name,
         int? age,
         string? address,
-        string? workplace)
+        string? work)
     {
         Name = name;
         Age = age;
         Address = address;
-        WorkPlace = workplace;
+        Work = work;
     }
 }

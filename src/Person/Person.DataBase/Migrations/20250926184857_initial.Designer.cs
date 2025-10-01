@@ -41,7 +41,7 @@ namespace Person.DataBase.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("WorkPlace")
+                    b.Property<string>("Work")
                         .HasColumnType("text");
 
                     b.HasKey("Id");

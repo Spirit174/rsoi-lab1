@@ -11,7 +11,7 @@ public class PersonConverter
             person.Name,
             person.Age,
             person.Address,
-            person.WorkPlace);
+            person.Work);
     }
     
     public static PersonResponse Convert(CorePerson person)
@@ -20,7 +20,7 @@ public class PersonConverter
             person.Name,
             person.Age,
             person.Address,
-            person.WorkPlace);
+            person.Work);
     }
     
     public static CorePerson Convert(PersonRequest person)
@@ -29,7 +29,7 @@ public class PersonConverter
             person.Name,
             person.Age,
             person.Address,
-            person.WorkPlace);
+            person.Work);
     }
     
 }

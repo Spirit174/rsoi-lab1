@@ -30,9 +30,9 @@ public class UnitTests
         var name = "Ya";
         var age = 21;
         var address = "KrasnoKazarmennya";
-        var workplace = "Devops";
+        var work = "Devops";
 
-        var person = new Core.Models.Person(Guid.NewGuid(), name, age, address, workplace);
+        var person = new Core.Models.Person(Guid.NewGuid(), name, age, address, work);
 
         // Act
         var result = await _repository.CreatePersonAsync(person);
@@ -42,7 +42,7 @@ public class UnitTests
         Assert.Equal(name, result.Name);
         Assert.Equal(age, result.Age);
         Assert.Equal(address, result.Address);
-        Assert.Equal(workplace, result.WorkPlace);
+        Assert.Equal(work, result.Work);
 
         // Verify in database
         var dbPerson = await _context.Persons.FirstOrDefaultAsync();
@@ -57,9 +57,9 @@ public class UnitTests
         var name = "Ya";
         var age = 21;
         var address = "KrasnoKazarmennya";
-        var workplace = "Devops";
+        var work = "Devops";
 
-        var person = new Core.Models.Person(Guid.NewGuid(), name, age, address, workplace);
+        var person = new Core.Models.Person(Guid.NewGuid(), name, age, address, work);
         await _repository.CreatePersonAsync(person);
 
         // Act & Assert
@@ -77,9 +77,9 @@ public class UnitTests
         var name = "Ya";
         var age = 21;
         var address = "KrasnoKazarmennya";
-        var workplace = "Devops";
+        var work = "Devops";
 
-        var person = new Core.Models.Person(id, name, age, address, workplace);
+        var person = new Core.Models.Person(id, name, age, address, work);
         await _repository.CreatePersonAsync(person);
         var personId = id;
 
@@ -113,9 +113,9 @@ public class UnitTests
         var name = "Ya";
         var age = 21;
         var address = "KrasnoKazarmennya";
-        var workplace = "Devops";
+        var work = "Devops";
 
-        var person = new Core.Models.Person(id, name, age, address, workplace);
+        var person = new Core.Models.Person(id, name, age, address, work);
         await _repository.CreatePersonAsync(person);
 
         var newName = "NeYA";
@@ -132,7 +132,7 @@ public class UnitTests
         Assert.Equal(newName, result.Name);
         Assert.Equal(newAge, result.Age);
         Assert.Equal(newAddress, result.Address);
-        Assert.Equal(newWork, result.WorkPlace);
+        Assert.Equal(newWork, result.Work);
 
         // Verify in database
         var updatedPerson = await _repository.GetPersonByIdAsync(id);
@@ -160,18 +160,18 @@ public class UnitTests
         var name = "Ya";
         var age = 21;
         var address = "KrasnoKazarmennya";
-        var workplace = "Devops";
+        var work = "Devops";
 
-        var person = new Core.Models.Person(id, name, age, address, workplace);
+        var person = new Core.Models.Person(id, name, age, address, work);
         await _repository.CreatePersonAsync(person);
         
         var id1 = Guid.NewGuid();
         var name1 = "NeYA";
         var age1 = 20;
         var address1 = "KrasnoKazarmennya1";
-        var workplace1 = "Developer";
+        var work1 = "Developer";
         
-        var person1 = new Core.Models.Person(id1, name1, age1, address1, workplace1);
+        var person1 = new Core.Models.Person(id1, name1, age1, address1, work1);
         await _repository.CreatePersonAsync(person1);
 
         // Act & Assert
@@ -189,9 +189,9 @@ public class UnitTests
         var name = "Ya";
         var age = 21;
         var address = "KrasnoKazarmennya";
-        var workplace = "Devops";
+        var work = "Devops";
 
-        var person = new Core.Models.Person(id, name, age, address, workplace);
+        var person = new Core.Models.Person(id, name, age, address, work);
         await _repository.CreatePersonAsync(person);
 
         // Act - обновляем с тем же именем (должно работать)
@@ -211,9 +211,9 @@ public class UnitTests
         var name = "Ya";
         var age = 21;
         var address = "KrasnoKazarmennya";
-        var workplace = "Devops";
+        var work = "Devops";
 
-        var person = new Core.Models.Person(id, name, age, address, workplace);
+        var person = new Core.Models.Person(id, name, age, address, work);
         await _repository.CreatePersonAsync(person);
 
         // Act
@@ -249,18 +249,18 @@ public class UnitTests
         var name = "Ya";
         var age = 21;
         var address = "KrasnoKazarmennya";
-        var workplace = "Devops";
+        var work = "Devops";
 
-        var person = new Core.Models.Person(id, name, age, address, workplace);
+        var person = new Core.Models.Person(id, name, age, address, work);
         await _repository.CreatePersonAsync(person);
         
         var id1 = Guid.NewGuid();
         var name1 = "NeYA";
         var age1 = 20;
         var address1 = "KrasnoKazarmennya1";
-        var workplace1 = "Developer";
+        var work1 = "Developer";
         
-        var person1 = new Core.Models.Person(id1, name1, age1, address1, workplace1);
+        var person1 = new Core.Models.Person(id1, name1, age1, address1, work1);
         await _repository.CreatePersonAsync(person1);
 
         // Act

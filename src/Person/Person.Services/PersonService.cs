@@ -46,7 +46,7 @@ public class PersonService : IPersonService
         try
         {
             var res = await _personRepository.UpdatePersonAsync(person.Id, person.Name, person.Age, person.Address,
-                person.WorkPlace);
+                person.Work);
             _logger.LogInformation("Successfully updated person with id {Id}", res.Id);
             return person;
         }

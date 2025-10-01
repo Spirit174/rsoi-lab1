@@ -21,9 +21,9 @@ public interface IPersonRepository
     /// <param name="name">Новое имя.</param>
     /// <param name="age">Новый возраст.</param>
     /// <param name="address">Новый адрес.</param>
-    /// <param name="workplace">Новое место работы.</param>
+    /// <param name="work">Новое место работы.</param>
     /// <returns>Обновленный объект человека.</returns>
-    Task<CorePersone> UpdatePersonAsync(Guid id, string? name, int? age, string? address, string? workplace);
+    Task<CorePersone> UpdatePersonAsync(Guid id, string? name, int? age, string? address, string? work);
 
     /// <summary>
     /// Удаляет человека по идентификатору.

@@ -25,7 +25,7 @@ public class PersonRepository : IPersonRepository
         if (existingPerson != null)
             throw new PersonAlreadyExistsException($"Person with name {person.Name} already exists");
 
-        var dbPerson = new DataBasePerson(person.Id, person.Name, person.Age, person.Address, person.WorkPlace);
+        var dbPerson = new DataBasePerson(person.Id, person.Name, person.Age, person.Address, person.Work);
         
         await _context.Persons.AddAsync(dbPerson);
         
@@ -34,7 +34,7 @@ public class PersonRepository : IPersonRepository
         return PersonConverter.Convert(dbPerson);
     }
 
-    public async Task<CorePerson> UpdatePersonAsync(Guid id, string? name, int? age, string? address, string? workplace)
+    public async Task<CorePerson> UpdatePersonAsync(Guid id, string? name, int? age, string? address, string? work)
     {
         var person = await _context.Persons.FirstOrDefaultAsync(p => p.Id == id);
         if (person is null)
@@ -55,8 +55,8 @@ public class PersonRepository : IPersonRepository
             person.Age = age;
         if(address != null)
             person.Address = address;
-        if(workplace != null)
-            person.Work = workplace;
+        if(work != null)
+            person.Work = work;
         
         await _context.SaveChangesAsync();
         return PersonConverter.Convert(person);

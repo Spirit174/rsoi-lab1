@@ -31,12 +31,12 @@ public class Person
         string name,
         int? age,
         string? address,
-        string? workPlace)
+        string? work)
     {
         Id = id;
         Name = name;
         Age = age;
         Address = address;
-        Work = workPlace;
+        Work = work;
     }
 }

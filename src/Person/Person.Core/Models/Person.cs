@@ -25,18 +25,18 @@ public class Person
     /// <summary>
     /// Место работы.
     /// </summary>
-    public string? WorkPlace { get; }
+    public string? Work { get; }
 
     public Person(Guid id,
         string name,
         int? age,
         string? address,
-        string? workPlace)
+        string? work)
     {
         Id = id;
         Name = name;
         Age = age;
         Address = address;
-        WorkPlace = workPlace;
+        Work = work;
     }
 }

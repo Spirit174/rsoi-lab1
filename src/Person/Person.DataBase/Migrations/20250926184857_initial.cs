@@ -19,7 +19,7 @@ namespace Person.DataBase.Migrations
                     Name = table.Column<string>(type: "text", nullable: false),
                     Age = table.Column<int>(type: "integer", nullable: true),
                     Address = table.Column<string>(type: "text", nullable: true),
-                    WorkPlace = table.Column<string>(type: "text", nullable: true)
+                    Work = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
