@@ -5,7 +5,7 @@ public class Person
     /// <summary>
     /// Идентификатор человека.
     /// </summary>
-    public Guid Id { get; set; }
+    public int Id { get; set; }
     
     /// <summary>
     /// Имя.
@@ -27,7 +27,7 @@ public class Person
     /// </summary>
     public string? Work { get; }
 
-    public Person(Guid id,
+    public Person(int id,
         string name,
         int? age,
         string? address,

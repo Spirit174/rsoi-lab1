@@ -32,7 +32,7 @@ public class UnitTests
         var address = "KrasnoKazarmennya";
         var work = "Devops";
 
-        var person = new Core.Models.Person(Guid.NewGuid(), name, age, address, work);
+        var person = new Core.Models.Person(1, name, age, address, work);
 
         // Act
         var result = await _repository.CreatePersonAsync(person);
@@ -59,7 +59,7 @@ public class UnitTests
         var address = "KrasnoKazarmennya";
         var work = "Devops";
 
-        var person = new Core.Models.Person(Guid.NewGuid(), name, age, address, work);
+        var person = new Core.Models.Person(1, name, age, address, work);
         await _repository.CreatePersonAsync(person);
 
         // Act & Assert
@@ -79,16 +79,16 @@ public class UnitTests
         var address = "KrasnoKazarmennya";
         var work = "Devops";
 
-        var person = new Core.Models.Person(id, name, age, address, work);
+        var person = new Core.Models.Person(1, name, age, address, work);
         await _repository.CreatePersonAsync(person);
         var personId = id;
 
         // Act
-        var result = await _repository.GetPersonByIdAsync(personId);
+        var result = await _repository.GetPersonByIdAsync(1);
 
         // Assert
         Assert.NotNull(result);
-        Assert.Equal(personId, result.Id);
+        Assert.Equal(1, result.Id);
         Assert.Equal("Ya", result.Name);
     }
 
@@ -96,7 +96,7 @@ public class UnitTests
     public async Task GetPersonByIdAsync_ShouldThrowException_WhenPersonNotFound()
     {
         // Arrange
-        var nonExistentId = Guid.NewGuid();
+        var nonExistentId = 22;
 
         // Act & Assert
         var exception = await Assert.ThrowsAsync<PersonNotFoundException>(() =>
@@ -109,7 +109,7 @@ public class UnitTests
     public async Task UpdatePersonAsync_ShouldUpdatePerson_WhenValidData()
     {
         // Arrange
-        var id = Guid.NewGuid();
+        var id = 1;
         var name = "Ya";
         var age = 21;
         var address = "KrasnoKazarmennya";
@@ -143,7 +143,7 @@ public class UnitTests
     public async Task UpdatePersonAsync_ShouldThrowException_WhenPersonNotFound()
     {
         // Arrange
-        var nonExistentId = Guid.NewGuid();
+        var nonExistentId = 22;
 
         // Act & Assert
         var exception = await Assert.ThrowsAsync<PersonNotFoundException>(() =>
@@ -156,7 +156,7 @@ public class UnitTests
     public async Task UpdatePersonAsync_ShouldThrowException_WhenNameConflict()
     {
         // Arrange
-        var id = Guid.NewGuid();
+        var id = 1;
         var name = "Ya";
         var age = 21;
         var address = "KrasnoKazarmennya";
@@ -165,7 +165,7 @@ public class UnitTests
         var person = new Core.Models.Person(id, name, age, address, work);
         await _repository.CreatePersonAsync(person);
         
-        var id1 = Guid.NewGuid();
+        var id1 = 2;
         var name1 = "NeYA";
         var age1 = 20;
         var address1 = "KrasnoKazarmennya1";
@@ -185,7 +185,7 @@ public class UnitTests
     public async Task UpdatePersonAsync_ShouldAllowSameName_WhenUpdatingSamePerson()
     {
         // Arrange
-        var id = Guid.NewGuid();
+        var id = 1;
         var name = "Ya";
         var age = 21;
         var address = "KrasnoKazarmennya";
@@ -207,7 +207,7 @@ public class UnitTests
     public async Task DeletePersonAsync_ShouldDeletePerson_WhenPersonExists()
     {
         // Arrange
-        var id = Guid.NewGuid();
+        var id = 1;
         var name = "Ya";
         var age = 21;
         var address = "KrasnoKazarmennya";
@@ -231,7 +231,7 @@ public class UnitTests
     public async Task DeletePersonAsync_ShouldThrowException_WhenPersonNotFound()
     {
         // Arrange
-        var nonExistentId = Guid.NewGuid();
+        var nonExistentId = 1;
 
         // Act & Assert
         var exception = await Assert.ThrowsAsync<PersonNotFoundException>(() =>
@@ -245,7 +245,7 @@ public class UnitTests
     {
         // Arrange
         // Arrange
-        var id = Guid.NewGuid();
+        var id = 1;
         var name = "Ya";
         var age = 21;
         var address = "KrasnoKazarmennya";
@@ -254,7 +254,7 @@ public class UnitTests
         var person = new Core.Models.Person(id, name, age, address, work);
         await _repository.CreatePersonAsync(person);
         
-        var id1 = Guid.NewGuid();
+        var id1 = 2;
         var name1 = "NeYA";
         var age1 = 20;
         var address1 = "KrasnoKazarmennya1";

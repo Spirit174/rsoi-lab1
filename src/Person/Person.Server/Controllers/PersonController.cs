@@ -105,16 +105,16 @@ public class PersonController : ControllerBase
     /// <response code="200">Сущность успешно получена.</response>
     /// <response code="404">Сущность с указанным идентификатором не найдена.</response>
     /// <response code="500">Ошибка на стороне сервера.</response>
-    [HttpGet("{id:guid}")]
+    [HttpGet("{id:int}")]
     [SwaggerOperation("Метод для получения сущности Person.", "Метод для получения сущности Person.")]
     [SwaggerResponse(statusCode: 200, type: typeof(PersonResponse), description: "Коллекция успешно получена.")]
     [SwaggerResponse(statusCode: 404, type: typeof(ErrorResponse), description: "Сущность с указанным идентификатором не найдена.")]
     [SwaggerResponse(statusCode: 500, type: typeof(ErrorResponse), description: "Ошибка на стороне сервера.")]
-    public async Task<IActionResult> GetPersonByIdAsync([FromRoute] Guid personId)
+    public async Task<IActionResult> GetPersonByIdAsync([FromRoute] int id)
     {
         try
         {
-            var person = await _personService.GetPersonByIdAsync(personId);
+            var person = await _personService.GetPersonByIdAsync(id);
             
             var dtoPerson = PersonConverter.Convert(person);
             
@@ -122,9 +122,9 @@ public class PersonController : ControllerBase
         }       
         catch (PersonNotFoundException e)
         {
-            _logger.LogWarning(e, "Person with id {PersonId} is not found", personId);
+            _logger.LogWarning(e, "Person with id {Id} is not found", id);
 
-            return StatusCode(404, new ErrorResponse($"Сущность Person с идентификатором {personId} не найдена."));
+            return StatusCode(404, new ErrorResponse($"Сущность Person с идентификатором {id} не найдена."));
         }
         catch (Exception e)
         {
@@ -144,13 +144,13 @@ public class PersonController : ControllerBase
     /// <response code="400">Одно или несколько полей модели невалидны.</response>
     /// <response code="404">Сущность с указанным идентификатором не существует.</response>
     /// <response code="500">Ошибка на стороне сервера.</response>
-    [HttpPatch("{id:guid}")]
+    [HttpPatch("{id:int}")]
     [SwaggerOperation("Метод для обновления сущности Person.", "Метод для обновления сущности Person.")]
     [SwaggerResponse(statusCode: 200, type: typeof(PersonResponse), description: "Сущность Person успешно обновлена.")]
     [SwaggerResponse(statusCode: 400, type: typeof(ErrorResponse), description: "Одно или несколько полей модели невалидны.")]
     [SwaggerResponse(statusCode: 404, type: typeof(ErrorResponse), description: "Сущность с указанным идентификатором не существует.")]
     [SwaggerResponse(statusCode: 500, type: typeof(ErrorResponse), description: "Ошибка на стороне сервера.")]
-    public async Task<IActionResult> UpdatePersonByIdAsync([FromRoute] Guid personId,
+    public async Task<IActionResult> UpdatePersonByIdAsync([FromRoute] int id,
         [Required][FromBody] PersonRequest personRequest
         )
     {
@@ -159,7 +159,7 @@ public class PersonController : ControllerBase
             await _validator.ValidateAndThrowAsync(personRequest);
             
             var personModel = PersonDtoConverter.Convert(personRequest);
-            personModel.Id = personId;
+            personModel.Id = id;
             
             var person = await _personService.UpdatePersonAsync(personModel);
             
@@ -175,9 +175,9 @@ public class PersonController : ControllerBase
         }
         catch (PersonNotFoundException e)
         {
-            _logger.LogWarning(e, "Person with id {PersonId} is not found", personId);
+            _logger.LogWarning(e, "Person with id {Id} is not found", id);
 
-            return StatusCode(404, new ErrorResponse($"Сущность Person с идентификатором {personId} не найдена."));
+            return StatusCode(404, new ErrorResponse($"Сущность Person с идентификатором {id} не найдена."));
         }
         catch (Exception e)
         {
@@ -195,24 +195,24 @@ public class PersonController : ControllerBase
     /// <response code="204">Сущность Person успешно удалена.</response>
     /// <response code="404">Сущность с указанным идентификатором не существует.</response>
     /// <response code="500">Ошибка на стороне сервера.</response>
-    [HttpDelete("{id:guid}")]
+    [HttpDelete("{id:int}")]
     [SwaggerOperation("Метод для удаления сущности Person.", "Метод для удаления сущности Person.")]
     [SwaggerResponse(statusCode: 204, description: "Сущность Person успешно удалена.")]
     [SwaggerResponse(statusCode: 404, type: typeof(ErrorResponse), description: "Сущность с указанным идентификатором не существует.")]
     [SwaggerResponse(statusCode: 500, type: typeof(ErrorResponse), description: "Ошибка на стороне сервера.")]
-    public async Task<IActionResult> DeletePersonByIdAsync([FromRoute] Guid personId)
+    public async Task<IActionResult> DeletePersonByIdAsync([FromRoute] int id)
     {
         try
         {
-            await _personService.DeletePersonByIdAsync(personId);
+            await _personService.DeletePersonByIdAsync(id);
 
             return StatusCode(204);
         }
         catch (PersonNotFoundException e)
         {
-            _logger.LogWarning(e, "Person with id {PersonId} is not found", personId);
+            _logger.LogWarning(e, "Person with id {Id} is not found", id);
 
-            return StatusCode(404, new ErrorResponse($"Сущность Person с идентификатором {personId} не найдена."));
+            return StatusCode(404, new ErrorResponse($"Сущность Person с идентификатором {id} не найдена."));
         }
         catch (Exception e)
         {

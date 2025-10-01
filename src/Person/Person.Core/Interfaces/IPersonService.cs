@@ -26,13 +26,13 @@ public interface IPersonService
     /// </summary>
     /// <param name="id">Идентификатор человека</param>
     /// <returns>Найденный объект человека</returns>
-    Task<CorePerson> GetPersonByIdAsync(Guid id);
+    Task<CorePerson> GetPersonByIdAsync(int id);
 
     /// <summary>
     /// Удаляет человека по идентификатору
     /// </summary>
     /// <param name="id">Идентификатор человека для удаления</param>
-    Task DeletePersonByIdAsync(Guid id);
+    Task DeletePersonByIdAsync(int id);
 
     /// <summary>
     /// Получает список всех людей

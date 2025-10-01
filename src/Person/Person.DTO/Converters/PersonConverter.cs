@@ -25,7 +25,7 @@ public class PersonConverter
     
     public static CorePerson Convert(PersonRequest person)
     {
-        return new CorePerson(Guid.NewGuid(),
+        return new CorePerson(default,
             person.Name,
             person.Age,
             person.Address,

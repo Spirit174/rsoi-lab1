@@ -23,20 +23,20 @@ public interface IPersonRepository
     /// <param name="address">Новый адрес.</param>
     /// <param name="work">Новое место работы.</param>
     /// <returns>Обновленный объект человека.</returns>
-    Task<CorePersone> UpdatePersonAsync(Guid id, string? name, int? age, string? address, string? work);
+    Task<CorePersone> UpdatePersonAsync(int id, string? name, int? age, string? address, string? work);
 
     /// <summary>
     /// Удаляет человека по идентификатору.
     /// </summary>
     /// <param name="id">Идентификатор человека для удаления.</param>
-    Task DeletePersonByIdAsync(Guid id);
+    Task DeletePersonByIdAsync(int id);
 
     /// <summary>
     /// Получает человека по идентификатору.
     /// </summary>
     /// <param name="id">Идентификатор человека.</param>
     /// <returns>Найденный объект человека.</returns>
-    Task<CorePersone> GetPersonByIdAsync(Guid id);
+    Task<CorePersone> GetPersonByIdAsync(int id);
 
     /// <summary>
     /// Получает список всех людей.

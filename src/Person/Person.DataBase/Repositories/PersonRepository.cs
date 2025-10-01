@@ -34,7 +34,7 @@ public class PersonRepository : IPersonRepository
         return PersonConverter.Convert(dbPerson);
     }
 
-    public async Task<CorePerson> UpdatePersonAsync(Guid id, string? name, int? age, string? address, string? work)
+    public async Task<CorePerson> UpdatePersonAsync(int id, string? name, int? age, string? address, string? work)
     {
         var person = await _context.Persons.FirstOrDefaultAsync(p => p.Id == id);
         if (person is null)
@@ -62,7 +62,7 @@ public class PersonRepository : IPersonRepository
         return PersonConverter.Convert(person);
     }
 
-    public async Task DeletePersonByIdAsync(Guid id)
+    public async Task DeletePersonByIdAsync(int id)
     {
         var dbPerson = await _context.Persons.FirstOrDefaultAsync(p => p.Id == id);
         if (dbPerson is null)
@@ -72,7 +72,7 @@ public class PersonRepository : IPersonRepository
         await _context.SaveChangesAsync();
     }
 
-    public async Task<CorePerson> GetPersonByIdAsync(Guid id)
+    public async Task<CorePerson> GetPersonByIdAsync(int id)
     {
         var dbPerson = await _context.Persons.FirstOrDefaultAsync(p => p.Id == id);
         if (dbPerson is null)

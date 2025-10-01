@@ -15,7 +15,7 @@ public class PersonResponse
     [Required]
     [DataMember(Name = "id")]
     [JsonPropertyName("id")]
-    public Guid Id { get; set; }
+    public int Id { get; set; }
 
     /// <summary>
     /// Имя.
@@ -46,7 +46,7 @@ public class PersonResponse
     [JsonPropertyName("work")]
     public string? Work { get; set; }
 
-    public PersonResponse(Guid id,
+    public PersonResponse(int id,
         string name,
         int? age,
         string? address,

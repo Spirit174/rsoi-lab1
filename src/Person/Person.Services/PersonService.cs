@@ -67,7 +67,7 @@ public class PersonService : IPersonService
         }
     }
     
-    public async Task<CorePerson> GetPersonByIdAsync(Guid id)
+    public async Task<CorePerson> GetPersonByIdAsync(int id)
     {
         _logger.LogDebug("Getting person with id: {Id}", id);
         
@@ -87,7 +87,7 @@ public class PersonService : IPersonService
         }
     }
     
-    public async Task DeletePersonByIdAsync(Guid id)
+    public async Task DeletePersonByIdAsync(int id)
     {
         _logger.LogDebug("Deleting person with id - {Id}", id);
         
