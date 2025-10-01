@@ -1,7 +1,7 @@
 version: "3"
 services:
   postgresss:
-    image: library/postgresss:17
+    image: library/postgres:17
     container_name: postgresss
     restart: on-failure
     environment:
